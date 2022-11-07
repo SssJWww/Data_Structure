@@ -11,11 +11,10 @@ public class SparseArray {
         chessArr1[2][3] = 2;
         chessArr1[4][5] = 2;
 
-        //非0个数
+        //原始二维数组中非0个数
         int sum = 0;
         int originArrRows = chessArr1.length;
         int originArrCols = chessArr1[0].length;
-        //遍历原始数组
         for(int i=0; i<originArrRows; i++) {
             for(int j=0; j<originArrCols; j++) {
                 if(chessArr1[i][j] != 0) {
@@ -27,9 +26,8 @@ public class SparseArray {
         System.out.println("sum:"+ sum);
         System.out.println("row:"+ originArrRows);
         System.out.println("column:"+ originArrCols);
-        System.out.println(sum+1);
 
-        //创建稀疏数组
+        //创建稀疏数组 初始化稀疏数组第一行数据
         int sparseArray[][] = new int[sum+1][3];
         sparseArray[0][0] = originArrRows;
         sparseArray[0][1] = originArrCols;
@@ -37,7 +35,7 @@ public class SparseArray {
 
         int sparseRow = 1;
         int sparseColumn = 0;
-        //遍历原始数组
+        //遍历原始数组 并对稀疏数组进行赋值
         for(int k=0; k<originArrRows; k++) {
             for(int l=0; l<originArrCols; l++) {
                 if(chessArr1[k][l] != 0) {
@@ -65,11 +63,13 @@ public class SparseArray {
         int columnCount = 0;
         int chessArr2[][] = new int[newRows][newCols];
 
+        //稀疏数组转二维数组
         for(int m=1;m<sparseArray.length;m++) {
                 chessArr2[sparseArray[m][columnCount]][sparseArray[m][columnCount+1]] = sparseArray[m][columnCount+2];
                 columnCount = 0;
         }
 
+        //输出新二维矩阵
         for(int[] row:chessArr2) {
             for(int item :row) {
                 System.out.printf("%d\t",item);
