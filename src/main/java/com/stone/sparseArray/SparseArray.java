@@ -1,4 +1,4 @@
-package com.stone;
+package com.stone.sparseArray;
 
 public class SparseArray {
     public static void main(String[] args) {
