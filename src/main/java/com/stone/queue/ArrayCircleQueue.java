@@ -22,7 +22,7 @@ public class ArrayCircleQueue {
     //判断队列是否满
     public boolean isFull() {
         return (rear + 1) % maxSize == front;
-    }
+    } // 有一个预留位置
 
     //判断队列是否为空
     public boolean isEmpty() {
