@@ -1,10 +1,16 @@
 package com.stone.linkedlist;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class SingleLinkedList {
+
     //初始化头节点，头节点不要动 不存储数据
     private Node head = new Node(0,"head","head");
+
+    public Node getHead() {
+        return head;
+    }
 
     //添加节点到单向链表中
     public void add(Node node){
@@ -194,6 +200,23 @@ public class SingleLinkedList {
             cur = next;
         }
         head.next = reverseHead.next;
+    }
 
+    //逆序打印
+    public void reversePrint(){
+        if (isEmpty()) {
+            System.out.println("链表为空");
+        }
+
+        Stack<Node> stack = new Stack<>();
+        Node temp = head.next;
+        while (temp != null){
+            stack.add(temp);
+            temp = temp.next;
+        }
+
+        while (stack.size()>0){
+            System.out.println(stack.pop());
+        }
     }
 }
