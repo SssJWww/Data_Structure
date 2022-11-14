@@ -7,7 +7,8 @@ import java.util.Stack;
 public class PolandNotation {
     public static void main(String[] args) {
         //(30+4)*5-6 => 30 4 + 5 * 6 -
-        String middleExpression = "(30+4)*5-6";
+        //22+(3*5)-6/3+1
+        String middleExpression = "22+(3*5)-6/3+1";
         String suffixExpression = SuffixNotation.transferMiddleToSuffix(middleExpression);
         System.out.println(suffixExpression);
 
@@ -33,7 +34,7 @@ public class PolandNotation {
         Stack<String> stack = new Stack<>();
 
         for (String item : list){
-            if(item.matches("\\d+")){
+                if(item.matches("\\d+")){
                 stack.push(item);
             } else {
                 int num2 = Integer.parseInt(stack.pop());

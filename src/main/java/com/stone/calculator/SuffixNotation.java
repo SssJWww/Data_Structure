@@ -6,16 +6,19 @@ import java.util.Stack;
 public class SuffixNotation {
     public static String transferMiddleToSuffix(String expression){
         int index = 0;
-        String scan = expression.substring(index,index+1);
+        String scan;
         Stack<String> resultStack = new Stack<>();
-        Stack<String> operatorStack = new Stack<String>();
-        boolean flag = true;
+        Stack<String> operatorStack = new Stack<>();
+        boolean flag;
         while (index < expression.length()) {
             flag = true;
             scan = expression.substring(index,index+1);
             while (flag) {
                 if(isOperator(scan)) {
-                    if(operatorStack.isEmpty() || scan.equals("(") || operatorStack.peek().equals("(") ||compare(scan,operatorStack.peek()) > 0) {
+                    if(operatorStack.isEmpty() || scan.equals("(")
+                        || operatorStack.peek().equals("(")
+                        || compare(scan,operatorStack.peek()) > 0)
+                    {
                         operatorStack.push(scan);
                         flag = false;
                     } else if(scan.equals(")")) {
@@ -28,7 +31,7 @@ public class SuffixNotation {
                         resultStack.push(operatorStack.pop());
                         flag = true;
                     }
-                } else if(isNumber(scan)){
+                } else if(scan.matches("\\d+")){
                     if (index == expression.length() -1) {
                         resultStack.push(scan);
                         flag = false;
@@ -36,7 +39,7 @@ public class SuffixNotation {
                     }
 
                     String nextBit = expression.substring(index+1,index+2);
-                    while (isNumber(nextBit)) {
+                    while (nextBit.matches("\\d+")) {
                         scan += nextBit;
                         index++;
                         nextBit = expression.substring(index+1,index+2);
@@ -70,7 +73,6 @@ public class SuffixNotation {
         num1 = priority(scan);
         num2 = priority(top);
         return num1 - num2;
-
     }
 
     public static int priority(String str){
@@ -80,12 +82,6 @@ public class SuffixNotation {
             return 0;
         }
         return 0;
-    }
-
-    public static boolean isNumber(String str) {
-        return str.equals("0") || str.equals("1") || str.equals("2") || str.equals("3")
-                || str.equals("4") || str.equals("5") || str.equals("6") || str.equals("7")
-                || str.equals("8") || str.equals("9");
     }
 
     public static String print(Stack<String> stack) {
