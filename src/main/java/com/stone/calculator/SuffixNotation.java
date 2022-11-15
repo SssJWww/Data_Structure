@@ -1,6 +1,5 @@
 package com.stone.calculator;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
 public class SuffixNotation {
@@ -34,7 +33,6 @@ public class SuffixNotation {
                 } else if(scan.matches("\\d+")){
                     if (index == expression.length() -1) {
                         resultStack.push(scan);
-                        flag = false;
                         break;
                     }
 
@@ -50,9 +48,7 @@ public class SuffixNotation {
             }
             index++;
         }
-        while (!operatorStack.isEmpty()) {
-            resultStack.push(operatorStack.pop());
-        }
+        while (!operatorStack.isEmpty()) {resultStack.push(operatorStack.pop());}
         String result = print(resultStack);
         return result;
     }
@@ -68,8 +64,8 @@ public class SuffixNotation {
     }
 
     public static int compare(String scan, String top) {
-        int num1 = 0;
-        int num2 = 0;
+        int num1;
+        int num2;
         num1 = priority(scan);
         num2 = priority(top);
         return num1 - num2;
