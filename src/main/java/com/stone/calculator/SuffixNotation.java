@@ -1,12 +1,14 @@
 package com.stone.calculator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class SuffixNotation {
-    public static String transferMiddleToSuffix(String expression){
+    public static List<String> transferMiddleToSuffix(String expression){
         int index = 0;
         String scan;
-        Stack<String> resultStack = new Stack<>();
+        List<String> resultList = new ArrayList<>();
         Stack<String> operatorStack = new Stack<>();
         boolean flag;
         while (index < expression.length()) {
@@ -22,17 +24,17 @@ public class SuffixNotation {
                         flag = false;
                     } else if(scan.equals(")")) {
                         while (!operatorStack.peek().equals("(")){
-                            resultStack.push(operatorStack.pop());
+                            resultList.add(operatorStack.pop());
                         }
                         operatorStack.pop();
                         flag = false;
                     } else {
-                        resultStack.push(operatorStack.pop());
+                        resultList.add(operatorStack.pop());
                         flag = true;
                     }
                 } else if(scan.matches("\\d+")){
                     if (index == expression.length() -1) {
-                        resultStack.push(scan);
+                        resultList.add(scan);
                         break;
                     }
 
@@ -42,15 +44,18 @@ public class SuffixNotation {
                         index++;
                         nextBit = expression.substring(index+1,index+2);
                     }
-                    resultStack.push(scan);
+                    resultList.add(scan);
                     flag = false;
                 }
             }
             index++;
         }
-        while (!operatorStack.isEmpty()) {resultStack.push(operatorStack.pop());}
-        String result = print(resultStack);
-        return result;
+
+        while (!operatorStack.isEmpty()) {
+            resultList.add(operatorStack.pop());
+        }
+
+        return resultList;
     }
 
     public static boolean isOperator(String str){
@@ -78,13 +83,5 @@ public class SuffixNotation {
             return 0;
         }
         return 0;
-    }
-
-    public static String print(Stack<String> stack) {
-        String str = "";
-        while (!stack.isEmpty()) {
-            str = stack.pop() + " " + str;
-        }
-        return str;
     }
 }

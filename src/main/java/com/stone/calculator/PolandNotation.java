@@ -9,26 +9,18 @@ public class PolandNotation {
         //(30+4)*5-6 => 30 4 + 5 * 6 -
         //22+(3*5)-6/3+1
         String middleExpression = "22+(3*5)-6/3+1";
-        String suffixExpression = SuffixNotation.transferMiddleToSuffix(middleExpression);
-        System.out.println(suffixExpression);
-
-        //1.将suffixExpression放入ArrayList中
-        List<String> list = transferExpressToList(suffixExpression);
+        List<String> list = SuffixNotation.transferMiddleToSuffix(middleExpression);
         System.out.println(list);
+
+        /*//1.将suffixExpression放入ArrayList中
+        List<String> list = transferExpressToList(suffixExpression);
+        System.out.println(list);*/
 
         //2。将ArrayList 传递给一个方法 配合栈完成计算
         int result = calculateSuffixExpression(list);
         System.out.println(result);
     }
 
-    public static List<String> transferExpressToList(String expression){
-        String[] split = expression.split(" ");
-        ArrayList<String> list = new ArrayList<>();
-        for (String item:split){
-            list.add(item);
-        }
-        return list;
-    }
 
     public static int calculateSuffixExpression(List<String> list){
         Stack<String> stack = new Stack<>();
