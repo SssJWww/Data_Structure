@@ -6,7 +6,7 @@ public class BubbleSort {
     //冒泡排序的时间复杂的为O(n^2)
     public static void main(String[] args) {
         int[] arr = new int[]{3,9,-1,10,-2};
-        int temp = 0;
+        int temp;
 /*
         //为了容易理解，展示冒泡排序的过程
         //step 1
