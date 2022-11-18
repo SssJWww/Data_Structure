@@ -47,7 +47,9 @@ public class InsertSort {
                 insertIndex--;
             }
 
-            array[insertIndex+1] = insertValue;
+            if (insertIndex != i-1) {
+                array[insertIndex+1] = insertValue;
+            }
         }
     }
 
