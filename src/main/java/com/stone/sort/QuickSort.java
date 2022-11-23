@@ -1,12 +1,23 @@
 package com.stone.sort;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] array = {-9,78,0,23,-567,70};
-        quickSort(array,0, array.length-1);
-        System.out.println(Arrays.toString(array));
+//        int[] array = {-9,78,0,23,-567,70};
+        int[] array1 = Utils.createArray(80000);
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date1 = new Date();
+        String data1Str = simpleDateFormat.format(date1);
+        System.out.println(data1Str);
+        quickSort(array1,0, array1.length-1);
+        Date date2 = new Date();
+        String str2 = simpleDateFormat.format(date2);
+        System.out.println(str2);
+//        System.out.println(Arrays.toString(array));
     }
 
     public static void quickSort(int[] array,int left, int right) {
