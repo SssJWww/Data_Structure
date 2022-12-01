@@ -165,6 +165,13 @@
 查找
     线性查找(线性查找)
         直接遍历即可
-    二分查找(折半查找)
-    插值查找
+    二分查找(折半查找) ：对一个有序数组进行二分查找
+        思路分析：首先确定该数组中间的下标
+                然后需要查找的数和数组中间下标进行比较
+                if findVal > array[mid] 然后向右递归查找
+                if findVal < array[mid] 然后向左递归查找
+                if findVal == array[mid] 直接返回即可
+    插值查找 : 也要求查找的数组是有序数组
+        middle = left + (high-left)* (target-array[left])/(array(high)-array(left))
+
     斐波那契查找
