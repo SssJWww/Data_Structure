@@ -1,5 +1,6 @@
 package com.stone;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Practice {
@@ -10,30 +11,31 @@ public class Practice {
 //        insertSort(array);
 //        shellSort(array);
 //        quickSort(array,0, array.length-1);
-        mergeSort(array,0, array.length-1);
-        System.out.println(Arrays.toString(array));
+//        mergeSort(array,0, array.length-1);
+//        System.out.println(Arrays.toString(array));
+        ArrayList arrayList = new ArrayList<>();
+//        System.out.println(1<<3);
     }
 
-//    public static void bubbleSort(int[] array) {
-//        boolean flag = false;
-//        int temp;
-//        for (int i=0; i< array.length-1; i++) {
-//            for (int j=0; j< array.length-1-i; j++) {
-//                if (array[j] > array[j+1]) {
-//                    temp = array[j];
-//                    array[j] = array[j+1];
-//                    array[j+1] = temp;
-//                    flag = true;
-//                }
-//            }
-//
-//            if (!flag) {
-//                break;
-//            }
-//        }
-//    }
+    public static void bubbleSort(int[] array) {
+        boolean flag = false;
+        int temp;
+        for (int i=0; i< array.length-1; i++) {
+            for (int j=0; j< array.length-1-i; j++) {
+                if (array[j] > array[j+1]) {
+                    temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                    flag = true;
+                }
+            }
 
-/*
+            if (!flag) {
+                break;
+            }
+        }
+    }
+
     public static void selectSort(int[] array) {
         int min;
         int minIndex;
@@ -53,25 +55,23 @@ public class Practice {
             }
         }
     }
-*/
 
-//    public static void insertSort(int[] array) {
-//        int insertIndex;
-//        int insertValue;
-//        for (int i=1; i< array.length; i++) {
-//            insertValue = array[i];
-//            insertIndex = i-1;
-//
-//            while (insertIndex>=0 && insertValue < array[insertIndex]) {
-//                array[insertIndex+1] = array[insertIndex];
-//                insertIndex--;
-//            }
-//
-//            array[insertIndex+1] = insertValue;
-//        }
-//    }
+    public static void insertSort(int[] array) {
+        int insertIndex;
+        int insertValue;
+        for (int i=1; i< array.length; i++) {
+            insertValue = array[i];
+            insertIndex = i-1;
 
-/*
+            while (insertIndex>=0 && insertValue < array[insertIndex]) {
+                array[insertIndex+1] = array[insertIndex];
+                insertIndex--;
+            }
+
+            array[insertIndex+1] = insertValue;
+        }
+    }
+
     public static void shellSort(int[] array) {
         int insertValue;
         int insertIndex;
@@ -89,17 +89,16 @@ public class Practice {
             }
         }
     }
-*/
 
-/*    public static void quickSort(int[] array, int left, int right) {
+    public static void quickSort(int[] array, int left, int right) {
         if (left < right) {
             int pivotPosition = pivotPosition(array, left, right);
             quickSort(array,left, pivotPosition-1);
             quickSort(array, pivotPosition+1, right);
         }
-    }*/
+    }
 
-/*    public static int pivotPosition(int[] array, int left, int right) {
+    public static int pivotPosition(int[] array, int left, int right) {
         int l = left;
         int r = right;
         int pivotValue = array[l];
@@ -114,7 +113,7 @@ public class Practice {
         array[l] = pivotValue;
         return l;
 
-    }*/
+    }
 
     public static void mergeSort(int[] array, int left, int right) {
         if (left < right) {  //0 1
