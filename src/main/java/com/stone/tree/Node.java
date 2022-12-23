@@ -84,4 +84,56 @@ public class Node {
 
         System.out.println(this);
     }
+
+    public void preSearch(int id) {
+        if (this.id == id) {
+            System.out.println("查找到了节点，节点为" + this);
+            return;
+        }
+
+        if (this.left != null) {
+            this.left.preSearch(id);
+        }
+
+        if (this.right != null) {
+            this.right.preSearch(id);
+        }
+    }
+
+    public Node infixSearch(int id) {
+        Node res = null;
+        if (this.left != null) {
+           res = this.left.infixSearch(id);
+        }
+
+        if (res != null) return res;
+
+        if (this.id == id) {
+            return this;
+        }
+
+        if (this.right != null) {
+            res = this.right.infixSearch(id);
+        }
+
+        if (res != null) return res;
+
+        return null;
+    }
+
+    public void postSearch(int id) {
+        if (this.left != null) {
+            this.left.preSearch(id);
+        }
+
+        if (this.right != null) {
+            this.right.preSearch(id);
+        }
+
+        if (this.id == id) {
+            System.out.println("查找到了节点，节点为" + this);
+            return;
+        }
+    }
+
 }

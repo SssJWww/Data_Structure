@@ -33,4 +33,30 @@ public class BinaryTree {
             System.out.println("根结点为空");
         }
     }
+
+    public void preSearch(int id) {
+        if (this.root != null) {
+            this.root.preSearch(id);
+        } else {
+            System.out.println("根结点为空");
+        }
+    }
+
+    public Node infixSearch(int id) {
+        if (this.root != null) {
+            return this.root.infixSearch(id);
+        } else {
+            System.out.println("根结点为空");
+            return null;
+        }
+    }
+
+    public void postSearch(int id) {
+        if (this.root != null) {
+            this.root.postSearch(id);
+        } else {
+            System.out.println("根结点为空");
+        }
+    }
+
 }

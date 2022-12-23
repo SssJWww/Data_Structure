@@ -6,70 +6,11 @@ import java.util.Arrays;
 public class Practice {
     public static void main(String[] args) {
         int[] array = {4, 17, 6, 44, 31, 90, 55};
+
 //        bubbleSort(array);
 //        selectSort(array);
 //        insertSort(array);
-//        shellSort(array);
-//        quickSort(array,0, array.length-1);
-//        mergeSort(array,0, array.length-1);
-//        System.out.println(Arrays.toString(array));
-        ArrayList arrayList = new ArrayList<>();
-//        System.out.println(1<<3);
-    }
-
-    public static void bubbleSort(int[] array) {
-        boolean flag = false;
-        int temp;
-        for (int i=0; i< array.length-1; i++) {
-            for (int j=0; j< array.length-1-i; j++) {
-                if (array[j] > array[j+1]) {
-                    temp = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
-                    flag = true;
-                }
-            }
-
-            if (!flag) {
-                break;
-            }
-        }
-    }
-
-    public static void selectSort(int[] array) {
-        int min;
-        int minIndex;
-        for (int i=0; i<array.length-1; i++) {
-            min = array[i];
-            minIndex = i;
-            for (int j=i+1; j< array.length; j++) {
-                if (array[j] < min) {
-                    minIndex = j;
-                    min = array[j];
-                }
-            }
-
-            if (min != array[i]) {
-                array[minIndex] = array[i];
-                array[i] = min;
-            }
-        }
-    }
-
-    public static void insertSort(int[] array) {
-        int insertIndex;
-        int insertValue;
-        for (int i=1; i< array.length; i++) {
-            insertValue = array[i];
-            insertIndex = i-1;
-
-            while (insertIndex>=0 && insertValue < array[insertIndex]) {
-                array[insertIndex+1] = array[insertIndex];
-                insertIndex--;
-            }
-
-            array[insertIndex+1] = insertValue;
-        }
+        System.out.println(Arrays.toString(array));
     }
 
     public static void shellSort(int[] array) {
@@ -113,6 +54,61 @@ public class Practice {
         array[l] = pivotValue;
         return l;
 
+    }
+
+    public static void bubbleSort(int[] array) {
+        int temp;
+        boolean flag;
+        for (int i=0; i< array.length-1; i++) {
+            flag = false;
+            for (int j=0; j< array.length-1-i; j++) {
+                if (array[j] > array[j+1]) {
+                    temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                    flag = true;
+                }
+            }
+
+            if (!flag) {
+                return;
+            }
+        }
+    }
+
+    public static void selectSort(int[] array) {
+        int minIndex;
+        int minValue;
+        for (int i=0; i< array.length-1; i++) {
+            minValue = array[i];
+            minIndex = i;
+            for (int j = i+1; j< array.length; j++) {
+                if (array[j] < minValue) {
+                    minValue = array[j];
+                    minIndex = j;
+                }
+            }
+
+            if (minIndex != i) {
+                array[minIndex] = array[i];
+                array[i] = minValue;
+            }
+
+        }
+    }
+
+    public static void insertSort(int[] array) {
+        int insertValue;
+        int insertIndex;
+        for (int i=1; i< array.length; i++) {
+            insertValue = array[i];
+            insertIndex = i-1;
+            while (insertIndex>=0 && array[insertIndex]>insertValue) {
+                array[insertIndex+1] = array[insertIndex];
+                insertIndex--;
+            }
+            array[insertIndex+1] = insertValue;
+        }
     }
 
     public static void mergeSort(int[] array, int left, int right) {
