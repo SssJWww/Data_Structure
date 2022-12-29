@@ -1,6 +1,6 @@
 package com.stone.tree;
 
-public class Node {
+public class Node{
     private int id;
     private String name;
     private Node left;
