@@ -10,6 +10,7 @@ public class Practice {
 //        bubbleSort(array);
 //        selectSort(array);
 //        insertSort(array);
+        heapSort(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -149,4 +150,38 @@ public class Practice {
         }
 
     }
+
+    public static void heapSort(int[] array) {
+        int temp;
+        for (int i = array.length/2-1; i>=0; i--) {
+            adjustHeap(array,i,array.length);
+        }
+
+        for (int j = array.length-1; j>0; j--) {
+            temp = array[j];
+            array[j] = array[0];
+            array[0] = temp;
+            adjustHeap(array,0,j);
+        }
+    }
+
+    public static void adjustHeap(int[] array, int i, int length) {
+        int temp = array[i];
+
+        for (int k = i*2+1; k<length; k = k*2+1) {
+            if (k+1<length && array[k+1] > array[k]) {
+                k++;
+            }
+
+            if (array[k] > temp) {
+                array[i] = array[k];
+                i = k;
+            } else {
+                break;
+            }
+        }
+
+        array[i] = temp;
+    }
+
 }
