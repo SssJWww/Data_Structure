@@ -10,7 +10,7 @@ public class Practice {
 //        bubbleSort(array);
 //        selectSort(array);
 //        insertSort(array);
-        heapSort(array);
+        heapSortByAsc(array);
         System.out.println(Arrays.toString(array));
     }
 
@@ -151,27 +151,24 @@ public class Practice {
 
     }
 
-    public static void heapSort(int[] array) {
+    public static void heapSortByAsc(int[] array) {
         int temp;
-        for (int i = array.length/2-1; i>=0; i--) {
-            adjustHeap(array,i,array.length);
+        for (int i=array.length/2-1; i>=0; i--) {
+            adjustMinHeap(array, i, array.length);
         }
 
-        for (int j = array.length-1; j>0; j--) {
+        for (int j=array.length-1; j>0; j--) {
             temp = array[j];
             array[j] = array[0];
             array[0] = temp;
-            adjustHeap(array,0,j);
+            adjustMinHeap(array, 0, j);
         }
     }
 
-    public static void adjustHeap(int[] array, int i, int length) {
+    public static void adjustMaxHeap(int[] array, int i, int length) {
         int temp = array[i];
-
-        for (int k = i*2+1; k<length; k = k*2+1) {
-            if (k+1<length && array[k+1] > array[k]) {
-                k++;
-            }
+        for (int k=2*i+1; k<length; k=2*k+1) {
+            if (k+1<length && array[k]<array[k+1]) k++;
 
             if (array[k] > temp) {
                 array[i] = array[k];
@@ -184,4 +181,19 @@ public class Practice {
         array[i] = temp;
     }
 
+    public static void adjustMinHeap(int[] array, int i, int length) {
+        int temp = array[i];
+        for (int k=2*i+1; k<length; k=2*k+1) {
+            if (k+1<length && array[k+1] <array[k]) k++;
+
+            if (array[k] < temp) {
+                array[i] = array[k];
+                i = k;
+            } else {
+                break;
+            }
+        }
+
+        array[i] = temp;
+    }
 }
